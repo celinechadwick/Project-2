@@ -1,8 +1,10 @@
-//Configure Node to talk to Postgres
-const pgp = require("pg-promise")();
 
-const db = pgp({
-    database: "user_db"
-});
+//pg promise only
+
+
+const pgp = require("pg-promise") ();
+const db = pgp(
+  {database: "wiki_db"}
+)
 
 module.exports = db;
