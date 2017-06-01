@@ -27,6 +27,5 @@ router.put('/articles/:id', controller.update);
 
 router.delete('/articles/:id', controller.destroy);
 
-]
 
 module.exports = router;

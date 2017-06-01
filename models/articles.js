@@ -4,28 +4,28 @@
 
 const db = require("../config/database");
 
-let articles = {};
+module.exports = {
 
-articles.findAll = () => {
+findAll() {
     return db.manyOrNone("SELECT * FROM users ORDER BY date DESC");
-};
+},
 
-articles.findById(id) {
+findById(id) {
   return db.one(`
     SELECT * FROM articles
-    WHERE id = $1`, id)
-
-)};
+    WHERE id = $1`, id
+  )},
 //setting up sort by the category:
-articles.findByCategory(category) {
+findByCategory(category) {
   return db.one(`
     SELECT * FROM articles
     WHERE category = $1`, category
-  )};
+    );
+},
 
 
 
-articles.create = (id) => {
+create(id) {
     return db.one(`
         INSERT INTO articles (title, post_date, category, img, wiki_text)
         VALUES ($1, $2, $3, $4, $5) RETURNING *;
@@ -36,19 +36,19 @@ articles.create = (id) => {
         newArticle.category,
         newArticle.img,
         newArticle.wiki_text,
-    ]);
-};
+    ])
+},
 
-articles.show = (id) => {
+show(id) {
   return db.one(`
     SELECT * articles
     WHERE id = $1
     `)
-};
+},
 
 
 //WHY did he pass article and id into the function? are they placeholders for the req and res?
-articles.update(article, id) => {
+update(article, id) {
   return db.one(`
   UPDATE articles
   SET title = $/title/,
@@ -57,20 +57,16 @@ articles.update(article, id) => {
   WHERE id = $/id/
   RETURNING *
   `, article);
-};
+},
 
 //passing in a placeholder again!
-articles.destroy(id) => {
+destroy(id) {
   return db.none(`
     DELETE
     FROM articles
     WHERE id = $1
   `, id);
+}
+
+
 };
-
-
-
-
-
-
-module.exports = articles;

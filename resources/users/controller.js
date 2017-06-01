@@ -3,18 +3,18 @@
 
 
 // const db = require("../../config/database");
-const article = require("../../models/articles");
+const Article = require("../../models/articles");
 
 let controller = {};
 
 controller.index = (req, res) => {
     //Logic to show all the articles
-    article
+    Article
     .findAll()
     .then((article_data) => {
         res.render("articles.ejs", {
             articles: articles_data
-        });
+        })
     })
     .catch((err) => {
         console.log(err);
@@ -23,7 +23,7 @@ controller.index = (req, res) => {
 
 controller.create = (req, res) => {
 //save a new article/post to the database
-    article
+    Article
     .create(req.body.article)
     .then((article_data) => {
         res.redirect("/articles");
@@ -35,12 +35,12 @@ controller.create = (req, res) => {
 //HELP HERE:
 controller.show = (req, res) => {
 //get one article
-  article
+  Article
   .findById()
   .then((article_data) => {
       res.render("article.ejs", {
           articles: articles_data
-      });
+      })
   })
   .catch((err) => {
       console.log(err);
@@ -52,12 +52,12 @@ controller.show = (req, res) => {
 //HELP HERE:
 controller.showCategory = (req, res) => {
 //get by category
-  article
+  Article
   .findByCategory()
   .then((article_data) => {
       res.render("category.ejs", {
           articles: articles_data
-      });
+      })
   })
   .catch((err) => {
       console.log(err);
@@ -66,11 +66,12 @@ controller.showCategory = (req, res) => {
 
 
 //UPDATING. HELP!!
-controller.update(req.body.article, req.params.id) {
-
+controller.update = (req, res) => {
+  Article
+    .findById()
     .then((article_data) => {
-      res.redirect("/article/:id");
-    });
+      res.redirect(`/articles/${article_data.id}`);
+    })
     .catch((error) => {
         console.error(error);
         throw error;
@@ -78,11 +79,17 @@ controller.update(req.body.article, req.params.id) {
 }
 
 
-controller.destroy = (req.params.id) => {
+controller.destroy = (req, res) => {
   //delete one article
+  Article
+  .findById()
   .then((article_data) => {
-    res.redirect("/articles")
+    res.redirect(`/articles/${article_data.id}`);
   })
+  .catch((error) => {
+      console.error(error);
+      throw error;
+  });
 }
 
 
