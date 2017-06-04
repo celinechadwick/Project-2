@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <form class="edit-article-form" method="POST" action="/articles/<%= articles.id %>?_method=PUT" >
+        <label>Title:</label>
+        <input class="title-input" type="text" name = "title" value="<%= articles.title %>" />
+        <br/>
+        <h6><%=articles.post_date %></h6>
+        <!-- <label>post_date:</label>
+        <input class="date-input" type="text" value="<%= articles.post_date %>" />
+        <br/> -->
+
+        <label>Image:</label>
+        <input class="image-input" type="text" name = "img" value="<%= articles.img %>" />
+        <br/>
+
+        <label>wiki_text:</label>
+        <input class="" name= "wiki_text" type="text" value="<%= articles.wiki_text %>"/>
+        <br/>
+
+        <label>Category Type:</label>
+        <input class="category-input" type="text" name='category' value="<%= articles.category %>" />
+
+        <br/>
+
+        <input type="hidden" name="id" value="<%= articles.id %>" />
+        <input type="submit">
+    </form>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</body>
+</html>
