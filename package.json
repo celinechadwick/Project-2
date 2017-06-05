@@ -1,9 +1,5 @@
-{
-  "engines": {
-    "node": ">=7.9.0"
-  }
-  "engineStrict": true,
-}
+
+
 {
   "name": "project-2",
   "version": "1.0.0",
@@ -12,6 +8,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=7.9.0"
+  },
+  "engineStrict": true,
   "author": "Celine Chadwick",
   "license": "ISC",
   "dependencies": {
