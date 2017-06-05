@@ -10,39 +10,55 @@
 
   </head>
   <body>
+    <div class="container" style="padding: 10px; text-align:center">
+        <br>
+        <a href="/articles"> <img src="http://i.imgur.com/yYrM5Pf.jpg" style="max-height:400px;"> </a>
 
+        <br>
+        <br>
+    </div>
     <div class="container">
       <br>
       <br>
-    <div class="col s6 offset-s1">
-    <div>
-      <h1 class=" blue"><%= articles.title%></h1>
+
+    <div class="card-panel grey lighten-3" style="color:#006064; padding:20px; border:1px solid grey">
+
+    <div style="text-align:center; margin:10px;">
+      <h1><%= articles.title%></h1>
       <h6><%=articles.post_date %></h6>
       <br>
       <br>
       <img src="<%= articles.img%>" alt="">
-      <p class="flow-text"><%= articles.wiki_text %></p>
+      <p class="flow-text" style="margin:30px"><%= articles.wiki_text %></p>
       <p class="flow-text">Tag: <%= articles.category%> </p>
       <br>
       <br>
     </div>
-    </div>
-    </div>
 
-    <button id="edit">
-      <a href="/articles/<%= articles.id %>/edit">
+<!-- Edit -->
+    <a class="waves-effect waves-light btn grey" href="/articles/<%= articles.id %>/edit">
         Edit Article
-      </a>
-    </button>
-
-
+    </a>
+    <br>
+    <br>
+<!-- DELETE -->
+    <!-- <a class="waves-effect waves-light btn grey">
+          <form method="POST" action="/articles/<%= articles.id %>?_method=delete">
+          </form>
+          Delete
+        </a> -->
     <form method="POST" action="/articles/<%= articles.id %>?_method=delete">
-      <button>
+      <button class="waves-effect waves-light btn grey">
         Delete Article
       </button>
     </form>
+
+
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   </div>
+</div>
+</div>
+
   </body>
 </html>

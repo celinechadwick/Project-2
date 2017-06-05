@@ -67,7 +67,6 @@ controller.showCategory = (req, res) => {
 } //throw an error.
 
 
-//UPDATING. HELP!!
 controller.edit = (req, res) => {
   Article
     .findById(req.params.id)
