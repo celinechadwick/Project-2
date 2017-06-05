@@ -1,4 +1,10 @@
 {
+  "engines": {
+    "node": ">=7.9.0"
+  }
+  "engineStrict": true,
+}
+{
   "name": "project-2",
   "version": "1.0.0",
   "description": "",
